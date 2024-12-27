@@ -1,0 +1,16 @@
+
+services:
+  kafka-test-user-app:
+    image: kafka-test-user-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS= kafka:9092
+    networks:
+      - kafkatestdriver_default
+    ports:
+      - "8081:8081"
+networks:
+  kafkatestdriver_default:
+    external: true
